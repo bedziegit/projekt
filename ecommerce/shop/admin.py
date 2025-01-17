@@ -9,7 +9,7 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = ['id', 'firstname', 'lastname', 'role',]
 
 admin.site.register(Customer)
-admin.site.register(Employee, ProductAdmin)
+admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(Category)
 admin.site.register(Order)
 admin.site.register(OrderProducts)
