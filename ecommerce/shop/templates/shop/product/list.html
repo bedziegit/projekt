@@ -1,0 +1,14 @@
+{% extends "shop\base.html" %}
+
+{% block title %}Lista obiektów Product{% endblock %}
+
+{% block content %}
+Aktualnie w mojej bazie dodane są poniższe obiekty  Product.
+{% for products in products %}
+    <p>Name: {{ product.name }} </p>
+    <p>Price: {{ product.price }}</p>
+    <p>Category: {{ product.category }}</p>
+    <p>Description: {{ product.description }}</p>
+    <hr>
+{% endfor %}
+{% endblock %}

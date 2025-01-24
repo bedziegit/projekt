@@ -1,0 +1,24 @@
+{% extends 'shop\base.html' %}  <!-- Rozszerzamy base.html, który znajduje się w shop/ -->
+
+{% block content %}
+    <h1>Edytuj produkt</h1>
+
+    <form method="post">  <!-- Formularz wysyłany metodą POST -->
+        {% csrf_token %}  <!-- Token CSRF dla bezpieczeństwa -->
+        {{ form.as_p }}  <!-- Wyświetlenie formularza jako paragrafy -->
+
+        {% if form.errors %}
+            <div class="form-errors">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <button type="submit">Zapisz zmiany</button>
+    </form>
+{% endblock %}
