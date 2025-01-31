@@ -1,0 +1,19 @@
+{% extends 'shop/base.html' %}
+
+{% block header %}
+<!-- Brak nagłówka na tej stronie -->
+{% endblock %}
+
+{% block content %}
+    <h1>Wybierz zamówienie</h1>
+    
+    <ul>
+        {% for order in orders %}
+            <li>
+                <a href="{% url 'order_products_list' order_id=order.number %}">
+                    Zamówienie #{{ order.number }} - {{ order.date_created }} - Klient: {{ order.customer }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

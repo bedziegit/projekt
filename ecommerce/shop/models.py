@@ -18,9 +18,9 @@ class Employee(models.Model):
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
 
-class Product(models.Model):
-    price = models.DecimalField(max_length=100)
-    category = models.TextField(null=True, blank=True)
+#class Product(models.Model):
+    #price = models.DecimalField(max_length=100)
+    #category = models.TextField(null=True, blank=True)
 
 class Category(models.Model):
     name= models.CharField(max_length=100)
@@ -56,7 +56,7 @@ class Order(models.Model):
 class OrderProducts(models.Model):
    order = models.ForeignKey(Order, on_delete=models.CASCADE)
    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-   quantity = models.DecimalField(max_digits=5, decimal_places=2)
+   quantity = models.DecimalField(max_digits=5, decimal_places=0)
    price = models.DecimalField(decimal_places=2, max_digits=7)
 
    class Meta:

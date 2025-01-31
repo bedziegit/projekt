@@ -1,14 +1,28 @@
+
 {% extends "shop\base.html" %}
-
-{% block title %}Lista obiektów Product{% endblock %}
-
+{% block header %}
+<!-- Brak nagłówka na tej stronie -->
+{% endblock %}
 {% block content %}
-Aktualnie w mojej bazie dodane są poniższe obiekty  Product.
-{% for products in products %}
-    <p>Name: {{ product.name }} </p>
-    <p>Price: {{ product.price }}</p>
-    <p>Category: {{ product.category }}</p>
-    <p>Description: {{ product.description }}</p>
-    <hr>
-{% endfor %}
+    <h1>Produkty</h1>
+    
+    <!-- Kontener na produkty -->
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product-card">
+               
+                <!-- Nazwa produktu -->
+                <h3 class="product-name">{{ product.name }}</h3>
+
+                <!-- Opis produktu (można wyświetlić tylko fragment) -->
+                <p class="product-description">{{ product.description|truncatewords:15 }}</p>
+
+                <!-- Cena produktu -->
+                <p class="product-price">{{ product.price }} PLN</p>
+
+                <!-- Link do szczegółów produktu -->
+                <a href="{% url 'product_edit' pk=product.pk %}" class="btn-details">edytuj szczegóły</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

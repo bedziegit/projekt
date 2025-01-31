@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+{% block header %}
+<!-- Brak nagłówka na tej stronie -->
+{% endblock %}
+
+{% block content %}
+    <h1>Produkty w zamówieniu #{{ order.number }}</h1>
+    
+    <p>Data zamówienia: {{ order.date_created }}</p>
+    <p>Klient: {{ order.customer }}</p>
+    
+    <p><a href="{% url 'order_list' %}">Zobacz wszystkie zamówienia</a></p>
+    <!-- Lista produktów w zamówieniu -->
+    <div class="order-products-list">
+        {% for order_product in order_products %}
+            <div class="order-product-card">
+                <!-- Nazwa produktu -->
+                <h3>{{ order_product.product.name }}</h3>
+                
+                <!-- Ilość produktu -->
+                <p>Ilość: {{ order_product.quantity }}</p>
+
+                <!-- Cena jednostkowa produktu -->
+                <p>Cena: {{ order_product.price }} PLN</p>
+                
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
